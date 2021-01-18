@@ -1,0 +1,29 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}language questions{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div class="language-questions-wrapper">
+    <div class="row">
+        {% for question in language.question_set.all %}
+        <!--  -->
+        <div class="col">
+            <div class="card">
+                <p class="card-body">
+                    <a href="{% url 'master:question_answers' question.id %}">{{question.question_text}}</a>
+                </p>
+
+                <p class="card-header" style="display: grid;grid-template-columns:repeat(3,1fr); gap:3em; padding-left:40px;">
+                    <a class="btn btn-success" href="{% url 'master:add_response' question.id %}">Respond</a>
+                    <a class="btn btn-primary" href="#">Edit Response</a>
+                    <a class="btn btn-danger" href="#">Delete Response</a>
+                </p>
+            </div>
+        </div>
+        <!--  -->
+        {% endfor %}
+    </div>
+</div>
+<!--  -->
+{% endblock body %}

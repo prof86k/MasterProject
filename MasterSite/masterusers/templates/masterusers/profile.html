@@ -1,0 +1,49 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}profile{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div class="profile-wrapper">
+    <section id="profile-header">
+        <h1>In Profile</h1>
+        <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+            <strong>Hollo</strong> You are welcome.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </section>
+    <section class="profile-content-wrapper">
+        <div class="new-subject-wrapper">
+            <section id="new-subjection-info">
+                <h2>Add New Subject To Learn</h2>
+            </section>
+            <!-- form area -->
+            <section class="new-subject-form">
+                <form action="{% url 'masteruser:profile' %}" method="POST" class="form-group">
+                    {% csrf_token %}
+                    <!--  -->
+                    <div class="input-group col mb-3">
+                        {{form}}
+                    </div>
+                    <input type="submit" class="btn btn-success btn-md col-12" value="Add" />
+                </form>
+            </section>
+        </div>
+        <!-- main content area -->
+        <div class="panel panel-default">
+            <h3>My Subjects</h3>
+            <div class="panel-body">
+                {% for subject in subjects %}
+                <!--  -->
+                <div class="panel-danger ml-3">
+                    <a href="{% url 'masteruser:topics_lessions' subject.id %}">{{subject}}</a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+</div>
+<!--  -->
+{% endblock body %}

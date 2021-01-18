@@ -1,0 +1,18 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}all comments{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<!--  -->
+<div class="all-comment-wrapper">
+    {% for comment in solution.comment_set.all%}
+    <!--  -->
+    {{comment.comment_text}}
+    <!--  -->
+    <a href="#">like</a>
+    <!--  -->
+    {% endfor %}
+</div>
+<!--  -->
+{% endblock body %}

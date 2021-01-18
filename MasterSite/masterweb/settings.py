@@ -31,13 +31,34 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # my apps
+    'masterwebsite.apps.MasterwebsiteConfig',
+    'masterusers.apps.MasterusersConfig',
+    # 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third party labraryies
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+        "special":{
+            'height':200,
+            'width':500,
+            'toolbar':"Special",
+            'toolbar_Special':[
+                ["Format","Bold","Underline","Table","CodeSnippet","BGColor","Image","Link"],
+            ],
+            'extraPlugins':'codesnippet',
+        }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,3 +139,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if DEBUG:
+    STATICFILES_DIRS=[
+        os.path.join(BASE_DIR,'static/')
+    ]
+else:
+    STATIC_ROOT = [
+        os.path.join(BASE_DIR,'static/')
+    ]
+
+MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

@@ -1,0 +1,24 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}add response{% endblock title %}
+
+<!-- body -->
+
+<!-- body -->
+{% block body %}
+<div class="response-wrapper">
+    <section class="response-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <!--  -->
+            {{form.media}}
+            <!--  -->
+            {{form.as_p}}
+            <!--  -->
+            <input class="btn btn-success col-5" type="submit" value="Add Response">
+        </form>
+    </section>
+</div>
+
+<!--  -->
+{% endblock body %}

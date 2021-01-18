@@ -1,0 +1,21 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}ask question{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div class="questions-wrapper">
+    <p>If language amoung in dropdown click here to <a href="{% url 'master:add_language' %}">Add Language</a></p>
+    <section class="questions-form">
+        <form action="{% url 'master:ask_question' %}" method="POST">
+            {% csrf_token %}
+            <!--  -->
+            {{question_form.as_p}}
+            <!--  -->
+            <input type="submit" value="Ask Question">
+        </form>
+    </section>
+</div>
+
+<!--  -->
+{% endblock body %}

@@ -1,0 +1,31 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}edit-lession-type{% endblock title %}
+
+
+<!-- body -->
+{% block body %}
+<div class="row">
+    {% for language in languages %}
+    <!--  -->
+    {% if language.question_set.count > 0 %}
+
+    <!--  -->
+    <div class="col-12 col-lg-6 mb-3 ">
+        <div class="card text-center">
+            <div class="card-header">
+                <a href="{% url 'master:language_questions' language.id %}" class="text-success active text-uppercase">{{language}}</a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">This Are Some Questions About {{language}}</h5>
+                <p class="card-text">This questions and their solutions will help you learn <strong>{{language}}</strong> without difficulties.</p>
+                <a href="{% url 'master:language_questions' language.id %}" class="btn btn-primary">Asked Questions</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!--  -->
+    {% endfor %}
+</div>
+<!--  -->
+{% endblock body %}

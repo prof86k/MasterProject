@@ -1,0 +1,21 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}Home{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<!--  -->
+{% for comment in solution.comment_set.all %}
+<!--  -->
+{{comment.comment_text}}
+<!--  -->
+{% endfor %}
+<form action="{% url 'master:add_comment' solution.id %}">
+    <!--  -->
+    {% csrf_token %}
+    <!--  -->
+    {{form.as_p}}
+    <input type="submit" value="comment" />
+</form>
+<!--  -->
+{% endblock body %}

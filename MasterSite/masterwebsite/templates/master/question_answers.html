@@ -1,0 +1,24 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}question answers{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<!--  -->
+<div style="background-color:#fff;">
+    <div class="container">
+        {{question.question_text}}
+        <!--  -->
+        {% for answer in question.programsolutions_set.all %}
+        <!--  -->
+        <p>{{answer.solution_code|safe}}</p>
+        <!--  -->
+        <div class="add-comment">
+            <a class="btn btn-success mb-3" href="{% url 'master:add_comment' answer.id %}">Add Comment</a>
+            <a class="btn btn-primary  mb-3" href="{% url 'master:all_comments' answer.id %}">all comments</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!--  -->
+{% endblock body %}

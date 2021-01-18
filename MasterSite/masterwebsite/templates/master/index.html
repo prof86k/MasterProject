@@ -1,0 +1,20 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}Home{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div class="main-wrapper">
+    <!--  -->
+    <section id="main-hearder">
+        <h1>Main</h1>
+    </section>
+    <div class="languages-section-wrapper">
+        <a class="btn btn-info" href="{% url 'master:programming_languages' %}" class="languages-link">master languages</a>
+    </div>
+
+</div>
+
+
+<!--  -->
+{% endblock body %}

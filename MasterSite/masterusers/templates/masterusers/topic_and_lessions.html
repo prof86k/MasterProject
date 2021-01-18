@@ -1,0 +1,71 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}details{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div class="main-wrapper">
+    <!--  -->
+    <section class="container">
+        <h1>
+            <a class="btn btn-primary" href="{% url 'masteruser:profile' %}"> profile</a>
+        </h1>
+
+    </section>
+    <section class="mb-3">
+        <form action="{% url 'masteruser:topics_lessions' subject.id %}" class="new-lession-form" method="POST">
+            {% csrf_token %}
+            <!--  -->
+            {{form.as_p}}
+            <!--  -->
+            <input class="btn btn-success col-12 col-sm-2" type="submit" value="Add">
+        </form>
+    </section>
+    <section class="container">
+        <h1 class="text-uppercase text-center mb-3">{{subject}} <span class="text-capitalize text-success">learning materials</span></h1>
+        <div class="row">
+            {% for topic in topics %}
+            <div class="card mb-3">
+                <div class="card-header row align-items-start">
+                    <div class="col">
+                        <h3>{{topic.topic_name}}</h3>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'masteruser:add_new_lession' topic.id %}" class="btn btn-info">Add New Lession</a>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'masteruser:delete_topic' topic.id %}" class="btn btn-danger">Delete Topic</a>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    {% for lession in topic.learn_set.all %}
+                    <!--  -->
+                    <div class="lession-type">
+                        <h3>{{lession.lession_type}}</h3>
+                        <span>
+                            <a href="{% url 'masteruser:edit_lession' lession.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url 'masteruser:delete_lession' lession.id %}" class="btn btn-danger">Delete</a>
+                        </span>
+                    </div>
+                    <div class="lession-detailed">
+                        <p>{{lession.lession|safe|truncatechars:50}}
+                            <span>
+                                <a href="{% url 'masteruser:lession_details' lession.id %}" class="btn btn-info">read all</a>
+                            </span>
+                        </p>
+                    </div>
+                    <!--  -->
+                    {% endfor %}
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+
+
+<!--  -->
+{% endblock body %}

@@ -1,0 +1,19 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}question answers{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<!--  -->
+<div class="new-language">
+    <form action="{% url 'master:add_language' %}" method="POST">
+        <!--  -->
+        {% csrf_token %}
+        <!--  -->
+        {{form.as_p}}
+        <input type="submit" value="add language" />
+    </form>
+</div>
+
+<!--  -->
+{% endblock body %}

@@ -1,0 +1,17 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}lession details{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div style="background-color:#fff;">
+    <div class="container">
+        <div class="lession-details-wrapper">
+            <p>
+                {{lession.lession|safe}}
+            </p>
+        </div>
+    </div>
+    <!--  -->
+</div>
+<a href="{% url 'masteruser:topics_lessions' topic_lession.subject.id %}" class="btn btn-info mt-1 text-center">Other Lessions of {{topic_lession.subject.name}}</a> {% endblock body %}

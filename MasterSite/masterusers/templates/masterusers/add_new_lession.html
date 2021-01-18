@@ -1,0 +1,22 @@
+{% extends 'master/base.html' %}
+<!-- title -->
+{% block title %}new lession{% endblock title %}
+
+<!-- body -->
+{% block body %}
+<div class="new-lession-section">
+    <a href="{% url 'masteruser:topics_lessions' subject %}">{{topic.topic_name}}</a>
+</div>
+<div class="new-lession-form">
+    <form action="{% url 'masteruser:add_new_lession' topic.id %}" method="POST">
+        {% csrf_token %}
+        <!--  -->
+        {{form.media}}
+        <!--  -->
+        {{form.as_p}}
+        <!--  -->
+        <input class="btn btn-success col-12 col-lg-2" type="submit" value="Add" />
+    </form>
+</div>
+<!--  -->
+{% endblock body %}
